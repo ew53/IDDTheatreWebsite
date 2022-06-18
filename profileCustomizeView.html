@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="showingApp">
+
+<head>
+    <title>IDD Theatre</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Custom CSS Styling-->
+    <link href="asset/css/custom.css " rel="stylesheet " />
+
+    <!--Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+
+    <script data-require="angular.js@1.2.15" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular.js"></script>
+    <script data-require="ui-router@0.2.8" data-semver="0.2.8" src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-md5/0.1.10/angular-md5.js"></script>
+
+
+
+</head>
+
+<body data-ng-controller="profileCtrl">
+
+    <div class="headtop">
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <a class="navbar-brand" href="#"><strong>IDD Theatre</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><strong class="fa fa-bars" aria-hidden="true" style="color:#e6e6ff"></strong></span>
+              </button>
+
+            <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="showing.html">See a Movie</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="showingTickets.html">My Bookings</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotion.html">Promotions</span></a>
+                    </li>
+
+                </ul>
+                <div data-ng-controller="startLoginCtrl">
+                    <ul>
+                        <li class="dropdown pr-5 mx-auto"><a href="#"><span>{{$storage.get('userfirstname')}}</span> 
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                            <ul>
+                                <li><a href="profileCustomizeView.html">Personal Profile</a></li>
+                                <li><a href="changePassRe.html">Change Password</a></li>
+                                <li><a href="showingCard.html">My Cards</a></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- ======= cardBody Section ======= -->
+    <section id="cardBody" class="cardBody">
+        <div class="container pt-5" data-aos="fade-up">
+
+            <div class="section-title pt-5">
+                <h2><strong>Personal Profile</strong></h2>
+                <p>Member's Information View</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= makeCenterBody Section ======= -->
+    <section id="makeCenterBody" class="makeCenterBody">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row mt-3 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+                <div class="col-lg-12 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+                    <form name="myForm">
+                        <!-- Email input -->
+                        <p>
+                            <label for="fName" style="display:none;">First Name: </label>
+                            <input id="fName" title="firstName" type="text" name="firstName" required="required" ng-model="viewFirstName" ng-pattern="/^[A-Za-z]+$/" class="form-control" placeholder="Family Name" disabled>
+                            <span ng-show="myForm.firstName.$error.pattern">Enter Alphabet Letters only.</span>
+                            <span ng-show="myForm.firstName.$dirty && myForm.firstName.$error.required">The input field cannot be empty.</span>
+                        </p>
+
+                        <p>
+                            <label for="lName" style="display:none;">Last Name: </label>
+                            <input id="lName" title="lastName" type="text" name="lastName" required="required" ng-model="viewLastName" ng-pattern="/^[A-Za-z]+$/" class="form-control" placeholder="Your Name" disabled>
+                            <span ng-show="myForm.lastName.$error.pattern">Enter Alphabet Letters only.</span>
+                            <span ng-show="myForm.lastName.$dirty && myForm.lastName.$error.required">The input field cannot be empty.</span>
+                        </p>
+
+                        <p>
+                            <label for="uName" style="display:none;">Username: </label>
+                            <input id="uName" title="userName" type="text" name="userName" required="required" ng-model="viewUserName" ng-minlength="3" minlength="3" class="form-control" placeholder="Username" disabled>
+                            <span ng-show="myForm.userName.$dirty && myForm.userName.$error.minlength">Username must be at least 3 characters</span>
+                            <span ng-show="myForm.userName.$dirty && myForm.userName.$error.required">Username cannot be empty.</span>
+                        </p>
+
+                        <p>
+                            <label for="eMail" style="display:none;">Email: </label>
+                            <input id="eMail" title="email" type="email" name="email" required="required" ng-model="viewEmail" ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/" class="form-control" placeholder="Email Address" disabled>
+                            <span ng-show="myForm.email.$dirty && myForm.email.$error.required">Email cannot be empty.</span>
+                            <span ng-show="myForm.email.$error.pattern">Please enter a valid email.</span>
+                        </p>
+
+                        <!-- <div class="">
+
+                            <a href="#!" class="text-body">Forgot password?</a>
+                        </div> -->
+                        <p class="mt-2">{{message}}</p>
+
+                        <div class="text-center text-lg-start mt-4 pt-2 pb-5">
+                            <button type="button" class="loginBtn btn btn-warning" style="padding-left: 2.5rem; padding-right: 2.5rem;" ng-click="editProf()">Edit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End makeCenterBody Section -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-md-6">
+                        <div class="footer-info">
+                            <h3>IDD Theatre<span>.</span></h3>
+                            <p>
+                                IOI City Tower 2, Lebuh IRC, Ioi Resort<br> Wilayah Persekutuan Putrajaya<br><br>
+                                <strong>Phone:</strong> +03 8579 9898<br>
+                                <strong>Email:</strong> iddtheatre@example.com<br>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h3><strong>Our Newsletter</strong></h3>
+                        <p>Get connect with us to receive any news and updates.</p>
+                        <form action="" method="post">
+                            <input type="email" name="email" placeholder="Email Address"><input type="submit" value="Subscribe">
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                Copyright Reserved &copy; 2022 <strong><span>IDD Theatre. </span></strong> All Rights Reserved
+            </div>
+            <div class="credits">
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Your Controller -->
+    <script src="showing.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+
+</htm>

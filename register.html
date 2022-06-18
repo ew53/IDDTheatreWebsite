@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="showingApp">
+
+<head>
+    <title>IDD Theatre</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!--Custom CSS Styling-->
+    <link href="asset/css/custom.css " rel="stylesheet " />
+
+    <!--Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+
+    <script data-require="angular.js@1.2.15" data-semver="1.2.15" src="http://code.angularjs.org/1.2.15/angular.js"></script>
+    <script data-require="ui-router@0.2.8" data-semver="0.2.8" src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-md5/0.1.10/angular-md5.js"></script>
+
+
+</head>
+
+<body data-ng-controller="startRegisterCtrl">
+
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://i.ibb.co/pbT1Rtm/movie-ticket.png" class="h-75 w-75" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4">
+                    <form name="myForm">
+                        <h1 class="mb-4"><strong>IDD Members Sign Up</strong></h1>
+
+                        <!-- Email input -->
+                        <p>
+                            <label for="fName" style="display:none;">First Name: </label>
+                            <input id="fName" title="firstName" type="text" name="firstName" required="required" ng-model="regFirstName" ng-pattern="/^[A-Za-z]+$/" class="form-control" placeholder="Family Name">
+                            <span ng-show="myForm.firstName.$error.pattern">Enter Alphabet Letters only.</span>
+                            <span ng-show="myForm.firstName.$dirty && myForm.firstName.$error.required">The input field cannot be empty.</span>
+                        </p>
+
+                        <p>
+                            <label for="lName" style="display:none;">Last Name: </label>
+                            <input id="lName" title="lastName" type="text" name="lastName" required="required" ng-model="regLastName" ng-pattern="/^[A-Za-z]+$/" class="form-control" placeholder="Your Name">
+                            <span ng-show="myForm.lastName.$error.pattern">Enter Alphabet Letters only.</span>
+                            <span ng-show="myForm.lastName.$dirty && myForm.lastName.$error.required">The input field cannot be empty.</span>
+                        </p>
+
+                        <p>
+                            <label for="eMail" style="display:none;">Email: </label>
+                            <input id="eMail" title="email" type="email" name="email" required="required" ng-model="regEmail" ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/" class="form-control" placeholder="Email Address">
+                            <span ng-show="myForm.email.$dirty && myForm.email.$error.required">Email cannot be empty.</span>
+                            <span ng-show="myForm.email.$error.pattern">Please enter a valid email.</span>
+                        </p>
+
+                        <p>
+                            <label for="uName" style="display:none;">Username: </label>
+                            <input id="uName" title="userName" type="text" name="userName" required="required" ng-model="regUserName" ng-minlength="3" minlength="3" class="form-control" placeholder="Username">
+                            <span ng-show="myForm.userName.$dirty && myForm.userName.$error.minlength">Username must be at least 3 characters</span>
+                            <span ng-show="myForm.userName.$dirty && myForm.userName.$error.required">Username cannot be empty.</span>
+                        </p>
+
+                        <p>
+                            <label for="pWord" style="display:none;">Password: </label>
+                            <input id="pWord" title="password" type="password" name="password" required="required" ng-model="regPassword" ng-minlength="8" minlength="8" class="form-control" placeholder="Password">
+                            <span class="error" ng-show="myForm.password.$dirty && myForm.password.$error.minlength">Password must be at least 8 characters.</span>
+                            <span ng-show="myForm.password.$dirty && myForm.password.$error.required">Password Required.</span>
+                        </p>
+
+                        <p>
+                            <label for="cPassword" style="display:none;">Confirm Password: </label>
+                            <input id="cPassword" title="confirmPass" type="password" name="confirmPass" required="required" ng-model="rePass" class="form-control" placeholder="Re-enter Password">
+                            <span ng-show="myForm.confirmPass.$dirty && myForm.confirmPass.$error.required">Confirm password is required.</span>
+                            <span ng-show="(myForm.confirmPass.$dirty && myForm.confirmPass.$dirty) && (regPassword != rePass)">
+                            Password Not Match.</span>
+                        </p>
+
+                        <!-- <div class="">
+
+                            <a href="#!" class="text-body">Forgot password?</a>
+                        </div> -->
+                        <p class="mt-2">{{message}}</p>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="button" class="loginBtn btn btn-warning" style="padding-left: 2.5rem; padding-right: 2.5rem;" ng-click="register(regUserName, regPassword, regFirstName, regLastName, regEmail)" ng-disabled="myForm.$invalid">Register</button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">You have an account? <a href="login.html" class="link-danger">Login</a></p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-warning">
+            <!-- Copyright -->
+            <div class="text-black mb-3 mb-md-0">
+                IDD Theatre Copyright © 2022. All rights reserved.
+            </div>
+            <!-- Copyright -->
+        </div>
+    </section>
+    <!-- Your Controller -->
+    <script src="showing.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+
+</htm>

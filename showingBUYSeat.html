@@ -1,0 +1,59 @@
+<div class="movieDetail mt-5 ">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="showingBody" class="showingBody">
+        <div class="container">
+
+            <div class="row pt-5 pb-5">
+
+                <div class="col-lg-5 align-items-stretch position-relative video-box" style='background-image: url("{{seatData[0].posterurl}}");' data-aos="fade-right">
+                </div>
+
+                <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch" data-aos="fade-left">
+
+                    <div class="content">
+                        <h3><strong>{{seatData[0].moviename}}</strong></h3>
+                        <h4>Ticket information </h4>
+                        <div class="buyInfo">
+                            <div class="pt-2">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">No of ticket(s): </label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                              <option selected disabled>Choose ticket number (Max 1)</option>
+                              <option value="1">1</option>
+                              <!-- <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="3">4</option>
+                              <option value="3">5</option> -->
+
+                            </select>
+                            </div>
+
+                            <div class="pt-2">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Seat Row: </label>
+                                <div class="col-lg-6">
+                                    <!-- <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" ng-model="seat" ng-options="obj.id as obj.row + ' ' +obj.no disable when obj.available == '0' for obj in seatData"> -->
+                                    <!-- <option selected disabled >Choose seat: </option>
+                                        <option value="" data-ng-repeat="obj in seatData">{{obj.row}} {{obj.no}}</option> -->
+
+                                    <!-- </select> -->
+
+                                    <!-- <select class="custom select mr-sm-2" id="inlineFormCustom Select" data-ng-model="seatList" data-ng-options="obj as obj.row for obj in seatData"></select> -->
+                                    <select name="user_country" class="custom-select mr-sm-2" id="inlineFormCustomSelect" ng-model="seat" ng-options="item.seatid as item.row + ' ' + item.no disable when item.available == '0' for item in seatData track by item.seatid">
+                                    <option value="" disabled>Select seat</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <a ng-click="buyTicket(seat)" href="ticketPaymentCard.html" class="mt-5 getTicketBtn btn-get-started animated fadeInUp scrollto">Buy now</a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End Why Us Section -->
+</div>

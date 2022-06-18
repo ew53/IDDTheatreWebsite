@@ -1,0 +1,20 @@
+<!-- ======= cardBody Section ======= -->
+<section id="cardBody" class="cardBody">
+    <div class="container pt-5 pb-5" data-aos="fade-up">
+
+        <div class="section-title pt-5">
+            <h2><strong>Now Showing</strong></h2>
+            <p>On-Screen Movies</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch pb-3" data-aos="zoom-in" data-aos-delay="100" data-ng-repeat="obj in movieData">
+                <div class="icon-box">
+                    <div class="iconPoster"><img src={{obj.posterurl}} class="img-fluid" alt=""></div>
+                    <h3><a href="#!MovieDetails/{{obj.id}}" ng-click="makeIndex(obj.id)" value="obj">{{obj.name}}</a></h3>
+                    <p>{{obj.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
