@@ -21,5 +21,5 @@ Full System which includes features of:
 - Profile Customize
   - Information Update
   - Change Password
-- Card Management
-  - CRUD Card
+- Cards Management
+  - CRUD Cards
